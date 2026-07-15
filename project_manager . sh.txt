@@ -1,0 +1,57 @@
+#!/bin/bash
+# File: project_manager.sh
+# Description: Automates student project workspace creation, verification, and reporting
+# Assignment Number: 10
+# Name: Peter Sagoe Acquaye-Hutchful 
+# SID: 2425403164
+# Email: hutchfulpeter123@gmail.com
+# Grader: Mr.Augustus Buckman
+# On my honor, Peter <YOUR SURNAME>, this programming assignment is my own work
+# and I have not provided this code to any other student.
+
+# -------------------------------
+# Part A: Create Workspace
+# -------------------------------
+create_workspace() {
+    student_name=$1
+    project_file=$2
+
+    mkdir -p "$student_name"
+    touch "$student_name/$project_file"
+
+    echo "Workspace created successfully."
+    echo "Directory: $student_name"
+    echo "File: $project_file"
+}
+
+# -------------------------------
+# Part B: Verify Workspace
+# -------------------------------
+verify_workspace() {
+    if [ -f "$student_name/$project_file" ]; then
+        echo "Workspace setup successful."
+    else
+        echo "Workspace setup failed."
+        exit 1
+    fi
+}
+
+# -------------------------------
+# Part C: System Report
+# -------------------------------
+system_report() {
+    echo "Current User: $(whoami)"
+    echo "Current Date: $(date)"
+    echo "Current Directory: $(pwd)"
+    echo "Numbers:"
+    for i in {1..5}; do
+        echo "$i"
+    done
+}
+
+# -------------------------------
+# Main Program Flow
+# -------------------------------
+create_workspace "$1" "$2"
+verify_workspace
+system_report
